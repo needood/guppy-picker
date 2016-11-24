@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #test {
+            height: 200px;
+        }
+    </style>
+    <link rel="stylesheet" href="./dist/css/picker.css">
+</head>
+
+<body>
+    <div id="test">
+    </div>
+    <button onclick="getValues();">取值</button>
+    <script src="./libs/handlebars.runtime.min.js"></script>
+    <script src="./libs/Guppy.js"></script>
+    <script src="./dist/Picker.js"></script>
+    <script>
+        function getSlot2(value, fn){
+                fn(["12345","23456","123", "234", "345","456","567"]);
+        }
+        var picker = new Picker({
+            default:function(){
+                return {
+                    slot1: ["123", "234", "345","456","567"],
+                    slot1Value: 0,
+                    slot2: ["12345"],
+                    slot2Value: 0,
+                    slot3: ["12345"],
+                    slot3Value: 0,
+                    slots: ["slot1","slot2","slot3"]
+                }
+            },
+            onAddressChange:function(){
+                var self = this;
+                getSlot2(this.get("slot1Value"), function(values){
+                    self.set("slot2", values);
+                    self.set("slot2Value", 1);
+                });
+            }.$observes("slot1Value"),
+            onAddressChange2:function(){
+                var self = this;
+                getSlot2(this.get("slot2Value"), function(values){
+                    self.set("slot3", values);
+                    self.set("slot3Value", 1);
+                });
+            }.$observes("slot2Value"),
+        })
+        picker.mount(document.getElementById("test"));
+        function getValues(){
+            alert(picker.get("slot1Value")+","+picker.get("slot2Value"));
+        }
+    </script>
+</body>
+
+</html>

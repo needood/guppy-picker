@@ -1,0 +1,44 @@
+{
+  "name": "guppy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "plugins/Picker.js",
+  "devDependencies": {
+
+    "autoprefixer": "^6.4.1",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-wrap": "^0.13.0",
+    "postcss-modules": "^0.5.2",
+    "precss": "^1.4.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-map": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0",
+
+
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "gulp": "^3.9.1",
+    "rollup": "^0.35.11",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.3",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "uglify-js": "^2.7.3"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "ie8-eventlistener": "^0.1.1",
+    "object-assign": "^4.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
