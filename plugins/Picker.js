@@ -4,9 +4,8 @@ const {
 } = Guppy.utils;
 const draggable = require("../libs/draggable");
 const translateUtil = require('../libs/translate');
-var handlebarsRuntime = require("handlebars/runtime");
-var itemHandlbars = handlebarsRuntime.template(require("../build/hbs/item"));
-var pickerHandlbars = handlebarsRuntime.template(require("../build/hbs/picker"));
+var itemHandlbars = require("../build/hbs/item");
+var pickerHandlbars = require("../build/hbs/picker");
 const ITEM_HEIGHT = 36;
 const visibleItemCount = 5;
 

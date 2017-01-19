@@ -1,5 +1,5 @@
 {
-  "name": "guppy",
+  "name": "guppy-picker",
   "version": "1.0.0",
   "description": "",
   "main": "plugins/Picker.js",
