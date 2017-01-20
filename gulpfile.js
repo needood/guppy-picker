@@ -22,7 +22,45 @@ var path = require('path');
 var fs = require('fs');
 var wrap = require('gulp-wrap');
 
-gulp.task('default',["css","hbs","Picker"], function() {
+gulp.task('default',['css','hbs','Picker','build'], function() {
+});
+
+gulp.task('build', function() {
+    return rollup({
+        entry: './plugins/Picker.js',
+        external: [
+            'handlebars/runtime'
+        ],
+        plugins: [nodeResolve({
+                jsnext: true
+            }),
+            commonjs(),
+            babel(
+
+            {
+                "presets": ["es2015-rollup", "stage-0"],
+                "ignore": [
+                    "dist/*.js",
+                    "packages/**/*.js"
+                ],
+                "exclude": ['node_modules/**']
+            }),
+            uglify({
+                compress: {
+                    screw_ie8: false
+                },
+                mangle: {
+                    screw_ie8: false
+                }
+            }, _uglify)
+        ]
+    }).then(function(bundle) {
+        return bundle.write({
+            moduleName: "Picker",
+            format: 'umd',
+            dest: './build/Picker.js'
+        });
+    });
 });
 gulp.task('Picker', function() {
     return rollup({
@@ -34,8 +72,15 @@ gulp.task('Picker', function() {
                 jsnext: true
             }),
             commonjs(),
-            babel({
-                exclude: ['node_modules/**']
+            babel(
+
+            {
+                "presets": ["es2015-rollup", "stage-0"],
+                "ignore": [
+                    "dist/*.js",
+                    "packages/**/*.js"
+                ],
+                "exclude": ['node_modules/**']
             }),
             uglify({
                 compress: {

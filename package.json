@@ -1,8 +1,8 @@
 {
   "name": "guppy-picker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
-  "main": "plugins/Picker.js",
+  "main": "build/Picker.js",
   "devDependencies": {
 
     "autoprefixer": "^6.4.1",
