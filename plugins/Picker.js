@@ -7,24 +7,35 @@ const translateUtil = require('../libs/translate');
 var handlebarsRuntime = require("handlebars/runtime");
 var itemHandlbars = handlebarsRuntime.template(require("../build/hbs/item"));
 var pickerHandlbars = handlebarsRuntime.template(require("../build/hbs/picker"));
-const ITEM_HEIGHT = 36;
-const visibleItemCount = 5;
-
-const startHeight = (visibleItemCount - 1) / 2 * ITEM_HEIGHT;
-
-function translate2index(translate) {
-    translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT;
-    var index = -(translate - Math.floor(visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT;
-
-    return index;
-}
 
 
 
 var Picker = Guppy.extend({
 
+    setVisibleItemCount:function(item){
+        if(item/2){
+            this.visibleItemCount = item;
+            return true
+        }
+        return false;
+    },
     defaultOptions: {
+        onInit: function() {
+            this.visibleItemCount = 5;
+        }.$on("init"),
         mount: function(el) {
+            const ITEM_HEIGHT = 36;
+
+            const visibleItemCount = this.visibleItemCount;
+
+            const startHeight = (visibleItemCount - 1) / 2 * ITEM_HEIGHT;
+
+            function translate2index(translate) {
+                translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT;
+                var index = -(translate - Math.floor(visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT;
+
+                return index;
+            }
             var self = this;
             el.innerHTML = pickerHandlbars();
             var hookEl = el.querySelector(".picker-items");

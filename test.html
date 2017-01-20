@@ -6,7 +6,7 @@
     <title></title>
     <style>
         #test {
-            height: 200px;
+            height: 400px;
         }
     </style>
     <link rel="stylesheet" href="./dist/css/picker.css">
@@ -50,9 +50,10 @@
                 });
             }.$observes("slot2Value"),
         })
+        picker.setVisibleItemCount(9);
         picker.mount(document.getElementById("test"));
         function getValues(){
-            alert(picker.get("slot1Value")+","+picker.get("slot2Value"));
+            alert(picker.get("slot1Value")+","+picker.get("slot2Value")+","+picker.get("slot3Value"));
         }
     </script>
 </body>
